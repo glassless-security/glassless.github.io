@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{page.title} - GlaSSLess</title>
+    <meta name="description" content="{page.description ?: 'GlaSSLess - Java JCA Provider powered by OpenSSL'}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{site.url('/css/style.css')}">
+    <link rel="icon" type="image/png" href="{site.url('/images/glassless.png')}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="{site.url('/')}" class="logo">
+                <img src="{site.url('/images/glassless.png')}" alt="GlaSSLess Logo" class="logo-img">
+                <span class="logo-text">GlaSSLess</span>
+            </a>
+            <nav class="main-nav">
+                <a href="{site.url('/')}" class="nav-link">Home</a>
+                <a href="{site.url('/getting-started/')}" class="nav-link">Getting Started</a>
+                <a href="{site.url('/algorithms/')}" class="nav-link">Algorithms</a>
+                <a href="{site.url('/performance/')}" class="nav-link">Performance</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        {#insert /}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 GlaSSLess. Licensed under Apache 2.0.</p>
+            <div class="footer-links">
+                <a href="https://github.com/glassless-security/glassless">GitHub</a>
+                <a href="https://central.sonatype.com/artifact/net.glassless/glassless-provider">Maven Central</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+---
+title: GlaSSLess
+description: Java JCA Provider powered by OpenSSL via FFM API - Native performance, pure Java distribution
+layout: layouts/home
+---
+<section class="hero">
+    <div class="container">
+        <img src="{site.url('/images/glassless.png')}" alt="GlaSSLess Logo" class="hero-logo">
+        <h1 class="hero-title">GlaSSLess</h1>
+        <p class="hero-subtitle">
+            A Java Cryptography Architecture (JCA) provider that wraps OpenSSL
+            using Java's Foreign Function & Memory API. Native performance with pure Java distribution.
+        </p>
+        <div class="hero-badges">
+            <a href="https://central.sonatype.com/artifact/net.glassless/glassless-provider">
+                <img src="https://img.shields.io/maven-central/v/net.glassless/glassless-provider?label=Maven%20Central" alt="Maven Central">
+            </a>
+            <img src="https://img.shields.io/badge/Java-25%2B-blue?logo=openjdk" alt="Java 25+">
+            <img src="https://img.shields.io/badge/OpenSSL-3.0%2B-green" alt="OpenSSL 3.0+">
+            <img src="https://img.shields.io/badge/License-Apache%202.0-green.svg" alt="Apache 2.0">
+        </div>
+        <div class="hero-buttons">
+            <a href="{site.url('/getting-started/')}" class="btn btn-primary">Get Started</a>
+            <a href="https://github.com/glassless-security/glassless" class="btn btn-secondary">View on GitHub</a>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F680;</div>
+                <h3 class="feature-title">Native Performance</h3>
+                <p class="feature-desc">
+                    Leverages OpenSSL's highly optimized cryptographic implementations.
+                    Up to 8x faster for asymmetric operations like Ed25519 signatures.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x2615;</div>
+                <h3 class="feature-title">No Native Compilation</h3>
+                <p class="feature-desc">
+                    Uses Java's FFM (Foreign Function & Memory) API for native interoperability.
+                    No JNI code or native compilation required.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F512;</div>
+                <h3 class="feature-title">FIPS Mode Support</h3>
+                <p class="feature-desc">
+                    Automatically detects and respects OpenSSL's FIPS mode configuration.
+                    Non-approved algorithms are automatically excluded.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4E6;</div>
+                <h3 class="feature-title">Drop-in Replacement</h3>
+                <p class="feature-desc">
+                    Standard JCA provider interface. Register once and use with existing
+                    Java cryptographic code without modifications.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4DA;</div>
+                <h3 class="feature-title">275+ Algorithms</h3>
+                <p class="feature-desc">
+                    Comprehensive algorithm coverage including AES, RSA, ECDSA, Ed25519,
+                    X25519, ChaCha20-Poly1305, HKDF, PBKDF2, and more.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F527;</div>
+                <h3 class="feature-title">Easy Integration</h3>
+                <p class="feature-desc">
+                    Available on Maven Central. Add the dependency and start using
+                    OpenSSL-backed cryptography in minutes.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="code-section">
+    <div class="container">
+        <h2 class="section-title">Quick Start</h2>
+        <pre><code>&lt;dependency&gt;
+   &lt;groupId&gt;net.glassless&lt;/groupId&gt;
+   &lt;artifactId&gt;glassless-provider&lt;/artifactId&gt;
+   &lt;version&gt;0.1-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+        <br>
+        <pre><code>import java.security.Security;
+import net.glassless.provider.GlaSSLessProvider;
+
+// Register the provider
+Security.addProvider(new GlaSSLessProvider());
+
+// Use with any JCA API
+MessageDigest md = MessageDigest.getInstance("SHA-256", "GlaSSLess");
+byte[] hash = md.digest("Hello, World!".getBytes());</code></pre>
+    </div>
+</section>

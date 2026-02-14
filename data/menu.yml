@@ -1,0 +1,9 @@
+nav:
+  - title: "Home"
+    path: "/"
+  - title: "Getting Started"
+    path: "/getting-started/"
+  - title: "Algorithms"
+    path: "/algorithms/"
+  - title: "Performance"
+    path: "/performance/"
