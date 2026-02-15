@@ -58,9 +58,11 @@ GlaSSLess provides **275+ algorithm implementations** covering all major cryptog
 | SLH-DSA-SHAKE-128s/f, SLH-DSA-SHAKE-192s/f, SLH-DSA-SHAKE-256s/f | Yes (FIPS 205) |
 | SHA1withRSA, SHA1withECDSA, SHA1withDSA | No |
 
-## Key Encapsulation Mechanisms (3)
+## Key Encapsulation Mechanisms (5)
 
 *Requires OpenSSL 3.5+*
+
+### ML-KEM (Pure Post-Quantum)
 
 | Algorithm | Security Level | FIPS Approved |
 |-----------|----------------|---------------|
@@ -68,7 +70,14 @@ GlaSSLess provides **275+ algorithm implementations** covering all major cryptog
 | ML-KEM-768 | 192-bit | Yes (FIPS 203) |
 | ML-KEM-1024 | 256-bit | Yes (FIPS 203) |
 
-ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism) provides quantum-resistant key exchange using Java's `KEM` API introduced in JDK 21.
+### Hybrid KEMs (Classical + Post-Quantum)
+
+| Algorithm | Classical | PQC | Security Level | FIPS Approved |
+|-----------|-----------|-----|----------------|---------------|
+| X25519MLKEM768 | X25519 | ML-KEM-768 | 192-bit | Yes |
+| X448MLKEM1024 | X448 | ML-KEM-1024 | 256-bit | Yes |
+
+Hybrid KEMs combine classical elliptic curve key exchange with ML-KEM for defense-in-depth against both classical and quantum attacks. See the [Hybrid KEM](/hybrid-kem/) page for detailed usage.
 
 ## Key Agreement (5)
 
