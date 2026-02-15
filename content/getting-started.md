@@ -7,7 +7,7 @@ layout: layouts/page
 ## Requirements
 
 - **Java**: 25 or later (with `--enable-native-access` flag)
-- **OpenSSL**: 3.0 or later (`libcrypto.so.3`)
+- **OpenSSL**: 3.0 or later (`libcrypto.so.3`), 3.5+ for post-quantum cryptography
 
 ### OpenSSL Version Compatibility
 
@@ -16,7 +16,8 @@ layout: layouts/page
 | 3.0.x | Supported | Base algorithms |
 | 3.1.x | Supported | Full support |
 | 3.2.x | Supported | Adds Argon2 KDFs |
-| 3.3.x+ | Supported | Latest features |
+| 3.3.x | Supported | Latest features |
+| 3.5.x+ | Supported | **Post-quantum cryptography (ML-KEM, ML-DSA, SLH-DSA)** |
 
 ## Installation
 
@@ -26,7 +27,7 @@ layout: layouts/page
 <dependency>
    <groupId>net.glassless</groupId>
    <artifactId>glassless-provider</artifactId>
-   <version>0.1-SNAPSHOT</version>
+   <version>0.2-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -118,6 +119,27 @@ Signature sig = Signature.getInstance("Ed25519", "GlaSSLess");
 sig.initSign(keyPair.getPrivate());
 sig.update("Message".getBytes());
 byte[] signature = sig.sign();
+```
+
+#### ML-KEM (Post-Quantum Key Encapsulation)
+
+*Requires OpenSSL 3.5+*
+
+```java
+// Generate ML-KEM key pair
+KeyPairGenerator kpg = KeyPairGenerator.getInstance("ML-KEM-768", "GlaSSLess");
+KeyPair keyPair = kpg.generateKeyPair();
+
+// Encapsulation (sender side) - generates shared secret and encapsulation
+KEM kem = KEM.getInstance("ML-KEM-768", "GlaSSLess");
+KEM.Encapsulator encapsulator = kem.newEncapsulator(keyPair.getPublic());
+KEM.Encapsulated encapsulated = encapsulator.encapsulate();
+SecretKey senderSecret = encapsulated.key();
+byte[] encapsulation = encapsulated.encapsulation();
+
+// Decapsulation (receiver side) - recovers shared secret
+KEM.Decapsulator decapsulator = kem.newDecapsulator(keyPair.getPrivate());
+SecretKey receiverSecret = decapsulator.decapsulate(encapsulation);
 ```
 
 ## FIPS Mode

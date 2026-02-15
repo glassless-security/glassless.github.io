@@ -6,7 +6,7 @@ layout: layouts/home
 <section class="hero">
     <div class="container">
         <img src="{site.url('/images/glassless.png')}" alt="GlaSSLess Logo" class="hero-logo">
-        <h1 class="hero-title">GlaSSLess</h1>
+        <h1 class="hero-title"><span class="text-white">GlaSS</span><span class="text-highlight">Less</span></h1>
         <p class="hero-subtitle">
             A Java Cryptography Architecture (JCA) provider that wraps OpenSSL
             using Java's Foreign Function & Memory API. Native performance with pure Java distribution.
@@ -71,6 +71,14 @@ layout: layouts/home
                 </p>
             </div>
             <div class="feature-card">
+                <div class="feature-icon">&#x1F30D;</div>
+                <h3 class="feature-title">Post-Quantum Ready</h3>
+                <p class="feature-desc">
+                    Full support for NIST post-quantum standards: ML-KEM (FIPS 203),
+                    ML-DSA (FIPS 204), and SLH-DSA (FIPS 205). Requires OpenSSL 3.5+.
+                </p>
+            </div>
+            <div class="feature-card">
                 <div class="feature-icon">&#x1F527;</div>
                 <h3 class="feature-title">Easy Integration</h3>
                 <p class="feature-desc">
@@ -88,7 +96,7 @@ layout: layouts/home
         <pre><code>&lt;dependency&gt;
    &lt;groupId&gt;net.glassless&lt;/groupId&gt;
    &lt;artifactId&gt;glassless-provider&lt;/artifactId&gt;
-   &lt;version&gt;0.1-SNAPSHOT&lt;/version&gt;
+   &lt;version&gt;0.2-SNAPSHOT&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
         <br>
         <pre><code>import java.security.Security;

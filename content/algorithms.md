@@ -43,7 +43,7 @@ GlaSSLess provides **275+ algorithm implementations** covering all major cryptog
 | HmacSHA1 | No |
 | Poly1305, SipHash | No |
 
-## Signatures (31)
+## Signatures (46+)
 
 | Algorithm | FIPS Approved |
 |-----------|---------------|
@@ -53,7 +53,22 @@ GlaSSLess provides **275+ algorithm implementations** covering all major cryptog
 | SHA3-256withECDSA, SHA3-384withECDSA, SHA3-512withECDSA | Yes |
 | SHA256withDSA, SHA384withDSA, SHA512withDSA | Yes |
 | Ed25519, Ed448, EdDSA | Yes |
+| ML-DSA-44, ML-DSA-65, ML-DSA-87 | Yes (FIPS 204) |
+| SLH-DSA-SHA2-128s/f, SLH-DSA-SHA2-192s/f, SLH-DSA-SHA2-256s/f | Yes (FIPS 205) |
+| SLH-DSA-SHAKE-128s/f, SLH-DSA-SHAKE-192s/f, SLH-DSA-SHAKE-256s/f | Yes (FIPS 205) |
 | SHA1withRSA, SHA1withECDSA, SHA1withDSA | No |
+
+## Key Encapsulation Mechanisms (3)
+
+*Requires OpenSSL 3.5+*
+
+| Algorithm | Security Level | FIPS Approved |
+|-----------|----------------|---------------|
+| ML-KEM-512 | 128-bit | Yes (FIPS 203) |
+| ML-KEM-768 | 192-bit | Yes (FIPS 203) |
+| ML-KEM-1024 | 256-bit | Yes (FIPS 203) |
+
+ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism) provides quantum-resistant key exchange using Java's `KEM` API introduced in JDK 21.
 
 ## Key Agreement (5)
 

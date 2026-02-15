@@ -28,6 +28,21 @@ GlaSSLess provides significant performance advantages for asymmetric cryptograph
 
 For large data (16KB+), symmetric operation performance converges between implementations.
 
+## ML-KEM Performance (Post-Quantum)
+
+*Benchmarked with OpenSSL 3.5.3 on AMD Ryzen 9 9900X*
+
+| Operation | ML-KEM-512 | ML-KEM-768 | ML-KEM-1024 |
+|-----------|------------|------------|-------------|
+| **GlaSSLess KeyGen** (ops/ms) | 31.86 | 24.24 | 18.32 |
+| **GlaSSLess Encaps** (ops/ms) | 54.36 | 37.13 | 26.74 |
+| **GlaSSLess Decaps** (ops/ms) | 29.95 | 20.83 | 15.16 |
+| **JDK KeyGen** (ops/ms) | 84.08 | 52.08 | 33.39 |
+| **JDK Encaps** (ops/ms) | 92.6 | 59.06 | 39.04 |
+| **JDK Decaps** (ops/ms) | 77.8 | 51.49 | 33.47 |
+
+JDK 24+ includes native ML-KEM support that outperforms the OpenSSL-based implementation due to lower FFM API call overhead. GlaSSLess provides ML-KEM for FIPS compliance scenarios where OpenSSL's FIPS-validated implementation is required.
+
 ## Benchmarks
 
 JMH microbenchmarks compare performance between JDK and GlaSSLess implementations.
@@ -52,6 +67,7 @@ mvn test -Pbenchmarks
 | SignatureBenchmark | SHA256withECDSA, SHA384withECDSA, Ed25519 | - |
 | KeyAgreementBenchmark | ECDH, X25519 | - |
 | KeyPairGeneratorBenchmark | EC P-256/P-384, RSA-2048/4096, Ed25519, X25519 | - |
+| KEMBenchmark | ML-KEM-512, ML-KEM-768, ML-KEM-1024 | - |
 | SecureRandomBenchmark | NativePRNG | 16B to 4KB |
 
 Results are saved to `target/jmh-results.json`.
@@ -65,12 +81,14 @@ Results are saved to `target/jmh-results.json`.
 - **ECDH with P-256/P-384** - Substantial improvement
 - **Large random number generation** - Much faster for buffers >256 bytes
 - **SHA3/SHAKE hashing** - Better OpenSSL implementation
+- **ML-KEM/ML-DSA/SLH-DSA** - When FIPS-validated OpenSSL implementation is required
 
 ### Use JDK for:
 
 - **Small data hashing (<1KB)** - HotSpot intrinsics are highly optimized
 - **Small HMAC operations** - JDK is faster for small inputs
 - **Tiny random numbers** - Lower overhead for small requests
+- **ML-KEM** - JDK 24+ native implementation is faster when FIPS validation not required
 
 ### Hybrid Approach
 
