@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Generate Roq Site
-        uses: quarkiverse/quarkus-roq@v1
+        uses: quarkiverse/quarkus-roq@2.1.0.BETA2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}   # Used to automatically get the GitHub Pages url
   deploy:
