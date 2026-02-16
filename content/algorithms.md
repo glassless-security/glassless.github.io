@@ -4,7 +4,26 @@ description: Complete list of cryptographic algorithms supported by GlaSSLess
 layout: layouts/page
 ---
 
-GlaSSLess provides **275+ algorithm implementations** covering all major cryptographic operations.
+GlaSSLess provides **370+ algorithm implementations** covering all major cryptographic operations.
+
+## Summary
+
+| Category | Count |
+|----------|-------|
+| Message Digests | 18 |
+| Ciphers | 143 |
+| MACs | 20 |
+| Signatures | 48 |
+| Key Encapsulation (KEM) | 6 |
+| Key Agreement | 5 |
+| Key Derivation (KDF) | 14 |
+| Secret Key Factories | 35 |
+| Key Pair Generators | 33 |
+| Key Factories | 11 |
+| Key Generators | 11 |
+| Algorithm Parameters | 23 |
+| Secure Random | 3 |
+| **Total** | **370+** |
 
 ## Message Digests (18)
 
@@ -14,7 +33,7 @@ GlaSSLess provides **275+ algorithm implementations** covering all major cryptog
 | SHA-512/224, SHA-512/256 | Yes |
 | SHA3-224, SHA3-256, SHA3-384, SHA3-512 | Yes |
 | SHAKE128, SHAKE256 | Yes |
-| BLAKE2b-512, BLAKE2s-256 | Yes |
+| BLAKE2b-512, BLAKE2s-256 | No |
 | MD5, SHA-1 | No |
 | SM3, RIPEMD160 | No |
 
@@ -43,7 +62,7 @@ GlaSSLess provides **275+ algorithm implementations** covering all major cryptog
 | HmacSHA1 | No |
 | Poly1305, SipHash | No |
 
-## Signatures (46+)
+## Signatures (48)
 
 | Algorithm | FIPS Approved |
 |-----------|---------------|
@@ -58,7 +77,7 @@ GlaSSLess provides **275+ algorithm implementations** covering all major cryptog
 | SLH-DSA-SHAKE-128s/f, SLH-DSA-SHAKE-192s/f, SLH-DSA-SHAKE-256s/f | Yes (FIPS 205) |
 | SHA1withRSA, SHA1withECDSA, SHA1withDSA | No |
 
-## Key Encapsulation Mechanisms (5)
+## Key Encapsulation Mechanisms (6)
 
 *Requires OpenSSL 3.5+*
 
@@ -86,15 +105,19 @@ Hybrid KEMs combine classical elliptic curve key exchange with ML-KEM for defens
 | ECDH, DH | Yes |
 | X25519, X448, XDH | Yes |
 
-## Key Derivation Functions (5)
+## Key Derivation Functions (14)
 
 | Algorithm | FIPS Approved |
 |-----------|---------------|
-| HKDF-SHA256, HKDF-SHA384, HKDF-SHA512 | Yes |
-| HKDF-SHA224 | Yes |
+| HKDF-SHA224, HKDF-SHA256, HKDF-SHA384, HKDF-SHA512 | Yes |
+| TLS13-KDF-SHA256, TLS13-KDF-SHA384 | Yes |
+| X963KDF-SHA256, X963KDF-SHA384, X963KDF-SHA512 | Yes |
+| SSHKDF-SHA256 | Yes |
+| KBKDF-HMAC-SHA256 | Yes (SP 800-108) |
+| TLS1-PRF-SHA256, TLS1-PRF-SHA384 | Yes |
 | HKDF-SHA1 | No |
 
-## Secret Key Factories (32)
+## Secret Key Factories (35)
 
 | Algorithm | FIPS Approved |
 |-----------|---------------|
