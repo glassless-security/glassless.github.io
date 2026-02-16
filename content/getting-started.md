@@ -27,7 +27,7 @@ layout: layouts/page
 <dependency>
    <groupId>net.glassless</groupId>
    <artifactId>glassless-provider</artifactId>
-   <version>0.2-SNAPSHOT</version>
+   <version>{{GLASSLESS_VERSION}}</version>
 </dependency>
 ```
 

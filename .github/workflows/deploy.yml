@@ -19,6 +19,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Fetch latest GlaSSLess version from Maven Central
+        id: version
+        run: |
+          VERSION=$(curl -s "https://search.maven.org/solrsearch/select?q=g:net.glassless+AND+a:glassless-provider&rows=1&wt=json" | jq -r '.response.docs[0].latestVersion')
+          echo "Latest version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Replace version placeholder in content
+        run: |
+          find content -type f \( -name "*.html" -o -name "*.md" \) -exec sed -i 's/{{GLASSLESS_VERSION}}/${{ steps.version.outputs.version }}/g' {} +
+
       - name: Generate Roq Site
         uses: quarkiverse/quarkus-roq@2.1.0.BETA2
         with:

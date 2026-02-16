@@ -16,16 +16,38 @@
         <div class="container">
             <a href="{site.url('/')}" class="logo">
                 <img src="{site.url('/images/glassless.png')}" alt="GlaSSLess Logo" class="logo-img">
-                <span class="logo-text"><span class="text-white">GlaSS</span><span class="text-highlight">Less</span></span>
+                <span class="logo-text"><span class="text-white">Gla</span><span class="text-highlight">SSL</span><span class="text-white">ess</span></span>
             </a>
             <nav class="main-nav">
                 <a href="{site.url('/')}" class="nav-link">Home</a>
                 <a href="{site.url('/getting-started/')}" class="nav-link">Getting Started</a>
-                <a href="{site.url('/algorithms/')}" class="nav-link">Algorithms</a>
-                <a href="{site.url('/hybrid-kem/')}" class="nav-link">Hybrid KEM</a>
-                <a href="{site.url('/fips/')}" class="nav-link">FIPS</a>
-                <a href="{site.url('/performance/')}" class="nav-link">Performance</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                        Docs <span class="dropdown-arrow">&#9662;</span>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="{site.url('/algorithms/')}" class="nav-dropdown-item">Algorithms</a>
+                        <a href="{site.url('/hybrid-kem/')}" class="nav-dropdown-item">Hybrid KEM</a>
+                        <a href="{site.url('/fips/')}" class="nav-dropdown-item">FIPS</a>
+                        <a href="{site.url('/performance/')}" class="nav-dropdown-item">Performance</a>
+                    </div>
+                </div>
             </nav>
+            <script>
+                document.querySelectorAll('.nav-dropdown-toggle').forEach(function(btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        var dropdown = this.parentElement;
+                        var isOpen = dropdown.classList.contains('open');
+                        document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+                        if (!isOpen) dropdown.classList.add('open');
+                        this.setAttribute('aria-expanded', !isOpen);
+                    });
+                });
+                document.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+                });
+            </script>
         </div>
     </header>
 
@@ -35,7 +57,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2026 <span class="text-white">GlaSS</span><span class="text-highlight">Less</span>. Licensed under Apache 2.0.</p>
+            <p>&copy; 2026 <span class="text-white">Gla</span><span class="text-highlight">SSL</span><span class="text-white">ess</span>. Licensed under Apache 2.0.</p>
             <div class="footer-links">
                 <a href="https://github.com/glassless-security/glassless">GitHub</a>
                 <a href="https://central.sonatype.com/artifact/net.glassless/glassless-provider">Maven Central</a>
