@@ -1,0 +1,7 @@
+---
+title: Supported Algorithms
+description: Complete list of cryptographic algorithms supported by GlaSSLess
+layout: layouts/page
+---
+
+include::../_includes/algorithms.adoc[leveloffset=+1]

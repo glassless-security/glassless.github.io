@@ -1,0 +1,7 @@
+---
+title: Post-Quantum Hybrid Key Exchange
+description: Quantum-resistant hybrid key encapsulation combining classical and post-quantum algorithms
+layout: layouts/page
+---
+
+include::../_includes/pqc.adoc[leveloffset=+1]

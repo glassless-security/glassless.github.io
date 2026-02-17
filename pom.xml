@@ -18,6 +18,7 @@
         <quarkus.platform.version>3.31.3</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
+        <glassless.version>0.7.0</glassless.version>
     </properties>
 
     <dependencyManagement>
@@ -39,6 +40,11 @@
             <version>2.0.4</version>
         </dependency>
         <dependency>
+            <groupId>io.quarkiverse.roq</groupId>
+            <artifactId>quarkus-roq-plugin-asciidoc</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
         </dependency>
@@ -47,10 +53,43 @@
             <artifactId>quarkus-junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- GlaSSLess AsciiDoc artifact (for unpacking documentation) -->
+        <dependency>
+            <groupId>net.glassless</groupId>
+            <artifactId>glassless-provider</artifactId>
+            <version>${glassless.version}</version>
+            <classifier>asciidoc</classifier>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack-asciidoc</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>net.glassless</groupId>
+                                    <artifactId>glassless-provider</artifactId>
+                                    <classifier>asciidoc</classifier>
+                                    <outputDirectory>${project.basedir}/_includes</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>${quarkus.platform.group-id}</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>

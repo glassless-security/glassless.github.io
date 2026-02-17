@@ -1,0 +1,7 @@
+---
+title: Performance
+description: Performance benchmarks comparing GlaSSLess with JDK implementations
+layout: layouts/page
+---
+
+include::../_includes/performance.adoc[leveloffset=+1]

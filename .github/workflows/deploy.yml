@@ -31,12 +31,13 @@ jobs:
 
       - name: Replace version placeholder in content
         run: |
-          find content -type f \( -name "*.html" -o -name "*.md" \) -exec sed -i 's/{{GLASSLESS_VERSION}}/${{ steps.version.outputs.version }}/g' {} +
+          find content -type f \( -name "*.html" -o -name "*.md" -o -name "*.adoc" \) -exec sed -i 's/{{GLASSLESS_VERSION}}/${{ steps.version.outputs.version }}/g' {} +
 
       - name: Generate Roq Site
         uses: quarkiverse/quarkus-roq@2.1.0.BETA2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}   # Used to automatically get the GitHub Pages url
+          args: -Dglassless.version=${{ steps.version.outputs.version }} -Dquarkus.asciidoc.attributes.project-version=${{ steps.version.outputs.version }}
   deploy:
     environment:
       name: github-pages
