@@ -38,6 +38,14 @@ layout: layouts/home
                     Up to 8x faster for asymmetric operations like Ed25519 signatures.
                 </p>
             </a>
+            <a href="{site.url('/performance/')}" class="feature-card feature-card-link">
+                <div class="feature-icon">&#x26A1;</div>
+                <h3 class="feature-title">Hybrid Mode</h3>
+                <p class="feature-desc">
+                    Best of both worlds: automatically uses JDK for SHA/HMAC (10x faster)
+                    and OpenSSL for ECDH/EdDSA (8x faster). 8.4x faster than pure JDK overall.
+                </p>
+            </a>
             <a href="{site.url('/getting-started/')}" class="feature-card feature-card-link">
                 <div class="feature-icon">&#x2615;</div>
                 <h3 class="feature-title">No Native Compilation</h3>
