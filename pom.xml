@@ -18,7 +18,7 @@
         <quarkus.platform.version>3.31.3</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
-        <glassless.version>0.7.0</glassless.version>
+        <glassless.version>0.8.0</glassless.version>
     </properties>
 
     <dependencyManagement>
