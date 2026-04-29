@@ -348,6 +348,11 @@ pre {
     line-height: 1.5;
 }
 
+pre code.hljs {
+    background: transparent;
+    padding: 0;
+}
+
 code {
     font-family: var(--font-mono);
 }
